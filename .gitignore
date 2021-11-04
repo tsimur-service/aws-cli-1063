@@ -1,0 +1,6 @@
+mt.py
+venv
+*.json
+/.idea
+*.*_ba
+*.txt
