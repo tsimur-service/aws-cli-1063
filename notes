@@ -1,0 +1,6 @@
+#1) Output tabl ec2 information by tag
+aws ec2 describe-instances --filters Name=tag:Environment,Values=Production --output table --region eu-central-1
+
+#2) Output json ec2 information by tag
+aws ec2 describe-instances --filters Name=tag:Environment,Values=Production --output table --region eu-central-1
+
