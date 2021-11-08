@@ -2,17 +2,13 @@ import os
 import json
 
 #####################################
-# 1) Output in table view ec2 insancec who has tag "Environment" = "Production"
+# 1) Output in table view ec2 instances who has tag "Environment" = "Production"
 os.system('aws ec2 describe-instances --filters Name=tag:Environment,Values=Production --output table --region '
           'eu-central-1')
 
 #####################################
-# 2) Take raw json and and ptocess it
+# 2) Take raw json and and process it
 raw_json_ec2 = os.popen('aws ec2 describe-instances --output json --region eu-central-1').read()
-
-# file = open("tryam.txt")
-# print(rawjson_ec2)
-
 py_json_ec2 = json.loads(raw_json_ec2)
 
 for vm_ec2 in py_json_ec2["Reservations"]:
@@ -26,7 +22,7 @@ for vm_ec2 in py_json_ec2["Reservations"]:
             print(" ")
 
 #####################################
-# 3)Output rds  instances so that maintance needed
+# 3)Output rds  instances so that maintenance needed
 os.system('aws rds describe-pending-maintenance-actions --output table')
 
 #####################################
@@ -35,4 +31,3 @@ os.system('aws ec2 describe-addresses --query "Addresses[?NetworkInterfaceId == 
 
 #####################################
 # 5) Output all the SSL from ACM that are not in use
-
