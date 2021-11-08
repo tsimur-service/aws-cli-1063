@@ -8,7 +8,7 @@ os.system('aws ec2 describe-instances --filters Name=tag:Environment,Values=Prod
           'eu-central-1')
 
 ####################################
-2) Take raw json and and process it
+#2) Take raw json and and process it
 raw_json_ec2 = os.popen('aws ec2 describe-instances --output json --region eu-central-1').read()
 py_json_ec2 = json.loads(raw_json_ec2)
 
