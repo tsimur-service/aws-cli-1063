@@ -42,5 +42,5 @@ cert_arns = [arn_item['CertificateArn'] for arn_item in py_cert_list['Certificat
 for arn in cert_arns:
     raw_json_cert = os.popen('aws acm describe-certificate --certificate-arn ' + arn).read()
     py_json_cert = json.loads(raw_json_cert)
-    if len(py_json_cert['Certificate']['InUseBy']) >= 1:
+    if len(py_json_cert['Certificate']['InUseBy']) == 0:
         print(py_json_cert['Certificate']['Serial'])
